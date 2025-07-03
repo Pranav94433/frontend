@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Toys - Toy Shop</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fffaf0;
+      color: #333;
+    }
+
+    header {
+      background: #f5d23a;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: #ff4081;
+    }
+
+    nav {
+      background: #ff4081;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1601758123927-196f0e5e4ef8?fit=crop&w=1500&q=80') no-repeat center center/cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+    }
+
+    .products {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .products h3 {
+      margin-bottom: 20px;
+      font-size: 2em;
+      color: #40c6ff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .product img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    .product h4 {
+      margin: 10px 0 5px;
+    }
+
+    .about,
+    .contact {
+      padding: 40px 20px;
+      background: #ffe082;
+    }
+
+    .about h3,
+    .contact h3 {
+      margin-bottom: 15px;
+      color: #d6ff40;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    input,
+    textarea {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #ff4081;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #fdd835;
+      text-align: center;
+      padding: 15px;
+    }
+   i{
+    font-size: 50px;
+    color: red;
+   }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(100%);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .marquee div {
+      display: inline-block;
+      padding-left: 100%;
+      animation: slide 20s linear infinite;
+    }
+  </style>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<body>
+  <header>
+    <h1>Happy Toys</h1>
+    <p>Where Playtime Begins!</p>
+
+
+    <input type="text" id="searchInput" placeholder="Search toys..." oninput="searchProducts()"
+      style="padding: 8px; margin-right: 15px;">
+
+    <!-- View Cart button -->
+    <a href="cart.html" class="btn btn-success"
+      style="padding: 8px 15px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">🛒
+      View Cart</a>
+    </div>
+  </header>
+
+  <nav style="
+  display: flex;
+  justify-content:space-between;
+  flex-direction:row;">
+    <a href="#home" class="nav-link">Home</a>
+    <a href="#products" class="nav-link">Toys</a>
+    <a href="#about" class="nav-link">About</a>
+    <a href="#contact" class="nav-link">Contact</a>
+    <a href="login form.html">login</a>
+  </nav>
+  <hr>
+
+
+  <div class="marquee">
+    <div>
+      <span>🔥 Hot deals! 50% off RC toys! 🔥</span>
+    </div>
+  </div>
+
+
+
+
+  <section class="hero" id="home">
+    <h2>Brighten Your Child’s Day!</h2>
+
+  </section>
+
+  <section class="products" id="products">
+    <h3>Our Best Toys</h3>
+    <marquee>
+      <div class="product-grid">
+        <div class="product">
+          <img src="images/WhatsApp Image 2025-05-02 at 11.35.24.jpeg" alt="Toy 1">
+          <h4><big>HOBBY GRADE MODEL RC</big></h4>
+          <p><del>RS.2,500.00</del><mark>RS.1,990.00</mark></p>
+        </div>
+        <div class="product">
+          <img src="images/WhatsApp Image 2025-05-02 at 12.25.05.jpeg" alt="Toy 2">
+          <h4><big>Lamborghini aventador Lykan hypersport Rc car</big></h4>
+          <p><del>RS.1,500.00</del><mark>RS.1,149.00</mark></p>
+        </div>
+        <div class="product">
+          <img src="images/96a5e933-e2d4-4d7b-b9a7-42f0b02e7aa5.jpg" alt="Toy 3">
+          <h4><big>Building blocks and Teddys</big></h4>
+          <p><del>RS.1,500.00</del><mark> RS.500-1000</mark></p>
+        </div>
+      </div>
+    </marquee>
+  </section>
+
+
+  <section>
+    <div class="product-grid">
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>HOBBY GRADE MODEL RC car for kids</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-02 at 11.35.24.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.2,500.00</del><mark>RS.1,990.00</mark></div>
+              <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('HOBBY GRADE MODEL RC', 'RS.1,990.00', 'images/WhatsApp Image 2025-05-02 at 11.35.24.jpeg')">Add
+                to Cart</a>
+
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>RC Flying Bike - Dual-Mode Drone Land & Air</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.02.16.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.2,500.00</del><mark>RS.1,999.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('RC Flying Bike - Dual-Mode Drone Land & Air', 'RS.1,999.00', 'images/WhatsApp Image 2025-05-03 at 13.02.16.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>Camera WiFi FPV Foldable Drone double cam</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 12.55.17.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.2,500.00</del><mark>RS.1,890.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Camera WiFi FPV Foldable Drone double cam', 'RS.1,890.00', 'images/WhatsApp Image 2025-05-03 at 12.55.17.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>Stunt drift car</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.07.27.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.2,200.00</del><mark>RS.1,890.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Stunt drift car', 'RS.1,890.00', 'images/WhatsApp Image 2025-05-03 at 13.07.27.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr>
+
+
+  <section>
+    <div class="product-grid">
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;" id="toys">
+              <h3 class="card-title"><big>Combat robot</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.30.26.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.1,200.00</del><mark>RS.890.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Combat robot', 'RS.890.00', 'images/WhatsApp Image 2025-05-03 at 13.30.26.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>Cute panda light</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.27.44.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.1000.00</del><mark>RS.690.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Cute panda light', 'RS.690.00', 'images/WhatsApp Image 2025-05-03 at 13.27.44.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>Plush giant teddy</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.24.55.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.2,200.00</del><mark>RS.1,190.00-1,990.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Plush giant teddy', '1,190.00', 'images/WhatsApp Image 2025-05-03 at 13.24.55.jpeg')">Add
+                to Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row row-cols-2">
+          <div class="col">
+            <div class="card" style="width: 18rem;">
+              <h3 class="card-title"><big>Super heros</big></h3>
+              <hr>
+              <img src="images/WhatsApp Image 2025-05-03 at 13.33.58.jpeg" class="card-img-top" alt="...">
+              <div class="card-body"><del>RS.500.00</del><mark>RS.300.00</mark></p <div class="row mt-3 ">
+                <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Description
+                      </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        500mah battery<br><br>
+
+                        Range:- 100feet circumference<br> <br>
+
+                        Upgrade your RC experience with our hobby grade model. Featuring a high-quality remote control,
+                        enjoy precise and responsive control over your RC vehicle. Perfect for hobbyists and
+                        enthusiasts, take your RC game to the next level.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Shipping details
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                      data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Shipping information</strong><br><br>
+                        <strong>Order Processing Time</strong><br><br>
+                        <ul>
+                          <li>Regular Orders: 1-3 business days</li>
+                          <li>Pre-Orders: As mentioned on the product page</li>
+                        </ul><br>
+                        <strong>Note:</strong> Order processing can be delayed due to public/national holidays.<br><br>
+                        <strong>Average Delivery Time (after order shipped):</strong>
+                        <ul>
+                          <li>Metros: 2-5 business days.</li>
+                          <li>Rest of India: 3-7 business days.</li>
+                        </ul><br>
+                        <strong>Read about our:</strong> Return & Refund Policy here.
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="btn btn-warning"
+                onclick="addToCart('Super heros', '300', 'images/WhatsApp Image 2025-05-03 at 13.33.58.jpeg')">Add to
+                Cart</a>
+              <a href="payment .html" class="btn btn-secondary">Buy now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="about" id="about">
+    <h3>About Us</h3>
+    <p>Happy Toys is a magical place where fun meets imagination. We offer handpicked toys that promote creativity,
+      learning, and joy for children of all ages.</p>
+    <a href="https://www.instagram.com/pranaveyyy__?igsh=MTl0d241b3U0enViNQ==">
+      <i class="fa-brands fa-square-instagram"></i>
+    </a>
+
+  </section>
+
+  <section class="contact" id="contact">
+    <h3>Contact Us</h3>
+   <form action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- Replace with your Access Key -->
+    <input type="hidden" name="access_key" value="2d35fecd-ab40-430d-ad91-dfad5bf81b49">
+
+      <input type="text" placeholder="Your Name" id="name" name="name" required />
+      <input type="email" placeholder="Your Email" id="email" name="email" required />
+      <textarea placeholder="message" rows="4" id="message"  name="message"required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+
+
+  <footer>
+    <p>&copy; 2025 Happy Toys. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for interactivity -->
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+  
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill out all fields.");
+      } else {
+        alert(`Thank you, ${name}! We'll get back to you shortly.`);
+        this.reset();
+      }
+    });
+
+
+
+    function addToCart(title, price, image) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push({ title, price, image });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${title} has been added to your cart.`);
+    }
+  </script>
+
+
+
+
+
+  </script>
+</body>
+
+</html>

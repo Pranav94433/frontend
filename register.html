@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGISTRTION PAGE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body style="background-color: cadetblue;">
+    <img style="margin-left: 250px;"src="images/b488e46f-9715-409b-83ab-4e7a70b59c84.jpg" alt="TOYS"height="250" width="900">
+    <h1 style="border: 100px;background-color: rgb(233, 43, 233);border-color: thistle;text-align: center;">TOYS STORE REGISTRATION</h1>
+    <div style="margin-left: 500px;">
+     <form onsubmit="register(event)">
+            <table>
+                <tr><td>FIRST NAME: <input type="text" id="frst" placeholder="First name" required></td></tr>
+                <tr><td>LAST NAME: <input type="text" id="last" placeholder="Last name" required></td></tr>
+                <tr><td>DOB: <input type="date" id="dob" required></td></tr>
+                <tr><td>MOBILE NUMBER: <input type="number" id="num" placeholder="Mobile number" required></td></tr>
+                <tr><td>ENTER OTP: <input type="number" id="OTP" placeholder="Enter OTP" required></td></tr>
+                <tr>
+                    <td>State:
+                        <select id="state" required>
+                            <option value="">--Select--</option>
+                            <option>Tamil Nadu</option>
+                            <option>Kerala</option>
+                            <option>Karnataka</option>
+                            <option>Andhra Pradesh</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>District:
+                        <select id="district" required>
+                            <option value="">--Select--</option>
+                            <option>Chennai</option>
+                            <option>Trichy</option>
+                            <option>Pudukkottai</option>
+                        </select>
+                    </td>
+                </tr><HR>
+              <tr><td>ADDRESS: <textarea placeholder="ADDRESS" rows="4" id="message" required></textarea></td></tr> 
+            </table>
+        
+            <br>
+            <input type="reset" value="Reset">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        <p id="lgmsg">Please do login</p>
+        
+        <marquee style="color: brown;">Register to get<br>50% OFFER</marquee>
+        
+        <script>
+        function register(event) {
+            event.preventDefault();
+        
+            let frst = document.getElementById('frst').value;
+            let last = document.getElementById('last').value;
+            let dob = document.getElementById('dob').value;
+            let num = document.getElementById('num').value;
+            let OTP = document.getElementById('OTP').value;
+            let state = document.getElementById('state').value;
+            let district = document.getElementById('district').value;
+            let MESSAGE = document.getElementById('message').value;
+        
+            if (!frst || !last || !dob || !num || !OTP || !state || !district || !message) {
+                alert('Please fill out all fields.');
+                return;
+            }
+        
+            console.log("Registered with:", frst, last, dob, num, OTP, state, district);
+        
+            document.getElementById('lgmsg').innerHTML = "Successfully account created";
+            document.getElementById('lgmsg').style.backgroundColor = "green";
+        
+            setTimeout(() => {
+                window.location.href = "login form.html";
+            }, 1000);
+        }
+        </script>
+        
+        </body>
+        </html>
+        

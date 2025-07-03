@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+    }
+    .payment-form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .payment-form h2 {
+      margin-bottom: 20px;
+    }
+    .payment-form input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .payment-form button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .payment-form button:hover {
+      background: #218838;
+    }
+    .success-message {
+      color: green;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payment-form">
+    <h2>Payments</h2>
+    <form id="paymentForm">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="amount" id="amount" placeholder="enter the amount" required />
+      <input type="text" id="cardNumber" placeholder="Card Number" maxlength="16" required />
+      <input type="month" id="expiry" placeholder="expiary date" required />
+      <input type="number" id="cvv" placeholder="CVV" maxlength="4" required />
+      <button type="submit">Pay Now</button>
+      <div class="success-message" id="successMessage"></div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('paymentForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const cardNumber = document.getElementById('cardNumber').value.trim();
+      const expiry = document.getElementById('expiry').value.trim();
+      const cvv = document.getElementById('cvv').value.trim();
+
+      if (!name || !email || !cardNumber || !expiry || !cvv) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+  
+      successMessage.textContent = "Payment successful! Thank you, " + name + ".";
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
