@@ -1,36 +1,88 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Shopping Cart</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
     .cart-container {
       width: 80%;
-      margin: auto;
-      margin-top: 50px;
+      margin: 50px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
     .cart-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px;
+      padding: 15px 0;
       border-bottom: 1px solid #ccc;
     }
     .cart-item img {
       width: 100px;
       height: auto;
+      object-fit: contain;
     }
     .cart-details {
       flex-grow: 1;
       margin-left: 20px;
     }
-    .cart-actions button {
-      margin: 0 5px;
+    .cart-actions button, .quantity-controls button {
+      padding: 6px 12px;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart-actions button:hover, .quantity-controls button:hover {
+      background-color: #c0392b;
+    }
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 10px;
+    }
+    .quantity-controls span {
+      min-width: 20px;
+      text-align: center;
     }
     #total {
       font-size: 1.2em;
       font-weight: bold;
       margin-top: 20px;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .buttons button {
+      padding: 10px 15px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: none;
+    }
+    .clear-btn {
+      background-color: #e67e22;
+      color: #fff;
+    }
+    .checkout-btn {
+      background-color: #27ae60;
+      color: #fff;
+    }
+    .continue-btn {
+      background-color: #3498db;
+      color: #fff;
     }
   </style>
 </head>
@@ -38,17 +90,29 @@
 
   <h2 style="text-align:center;">🛒 Your Shopping Cart</h2>
   <div class="cart-container" id="cartContainer">
-    <-- Cart items will appear here -->
- </div>
+    
+  </div>
 
-  <div style="text-align:center; margin-top:20px;">
-    <p id="total">Total: Rs. 0.00</p>
-    <button onclick="clearCart()">Clear Cart</button>
-    <a href="payment .html"><button>Proceed to Checkout</button></a>
+  <div class="buttons">
+    <p id="total">Total: Rs. 0</p>
+    <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+    <a href="index.html"><button class="continue-btn">Continue Shopping</button></a>
+    <a href="payment .html"><button class="checkout-btn">Proceed to Checkout</button></a>
   </div>
 
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(title, price, image) {
+      const existingIndex = cart.findIndex(item => item.title === title);
+      if (existingIndex !== -1) {
+        cart[existingIndex].quantity = (cart[existingIndex].quantity || 1) + 1;
+      } else {
+        cart.push({ title, price, image, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert("Item added to cart!");
+    }
 
     function renderCart() {
       const container = document.getElementById('cartContainer');
@@ -56,14 +120,17 @@
       let total = 0;
 
       if (cart.length === 0) {
-        container.innerHTML = '<p>Your cart is empty.</p>';
-        document.getElementById('total').innerText = 'Total: Rs.0';
+        container.innerHTML = '<p style="text-align:center; color: #888;">Your cart is empty.</p>';
+        document.getElementById('total').innerText = 'Total: Rs. 0';
         return;
       }
 
       cart.forEach((item, index) => {
-        const price = parseFloat(item.price.replace(/[^\d.]/g, ''));
-        total += price;
+        if (!item.quantity) item.quantity = 1;
+        const priceStr = item.price.replace(/[^\d.]/g, '').replace(/\.(?=.*\.)/g, '');
+        const unitPrice = parseFloat(priceStr) || 0;
+        const itemTotal = unitPrice * item.quantity;
+        total += itemTotal;
 
         const div = document.createElement('div');
         div.className = 'cart-item';
@@ -71,7 +138,13 @@
           <img src="${item.image}" alt="${item.title}">
           <div class="cart-details">
             <h4>${item.title}</h4>
-            <p>${item.price}</p>
+            <p>Price: ${item.price}</p>
+            <div class="quantity-controls">
+              <button onclick="updateQuantity(${index}, -1)">−</button>
+              <span>${item.quantity}</span>
+              <button onclick="updateQuantity(${index}, 1)">+</button>
+            </div>
+            <p>Subtotal: Rs. ${itemTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</p>
           </div>
           <div class="cart-actions">
             <button onclick="removeItem(${index})">REMOVE</button>
@@ -80,9 +153,13 @@
         container.appendChild(div);
       });
 
-      document.getElementById('total').innerText = 'Total: Rs. ' + Math.round(total);
+      document.getElementById('total').innerText = 'Total: Rs. ' + total.toLocaleString('en-IN', { minimumFractionDigits: 2 });
+    }
 
-
+    function updateQuantity(index, change) {
+      cart[index].quantity = Math.max(1, (cart[index].quantity || 1) + change);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
     }
 
     function removeItem(index) {
@@ -103,4 +180,4 @@
   </script>
 
 </body>
-</html> 
+</html>

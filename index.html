@@ -174,7 +174,7 @@
     <input type="text" id="searchInput" placeholder="Search toys..." oninput="searchProducts()"
       style="padding: 8px; margin-right: 15px;">
 
-    <!-- View Cart button -->
+    
     <a href="cart.html" class="btn btn-success"
       style="padding: 8px 15px; background-color: green; color: white; text-decoration: none; border-radius: 5px;">🛒
       View Cart</a>
@@ -851,19 +851,14 @@
 
 
 
-    function addToCart(title, price, image) {
-      let cart = JSON.parse(localStorage.getItem('cart')) || [];
-      cart.push({ title, price, image });
-      localStorage.setItem('cart', JSON.stringify(cart));
-      alert(`${title} has been added to your cart.`);
-    }
-  </script>
-
-
-
-
-
-  </script>
+  function addToCart(title, price, image) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ title, price, image });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Item added to cart!");
+    window.location.href = "cart.html"; // Optional: redirect to cart
+  }
+</script>
 </body>
 
 </html>
